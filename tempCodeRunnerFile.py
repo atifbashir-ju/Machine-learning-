@@ -1,4 +1,4 @@
-from scipy import stats
-Speed = [99, 86, 87, 88, 111, 86, 103, 87, 94 ,78, 77, 85, 86]
-Atif = stats.mode(Speed)
+import numpy as np
+speed = [32, 111, 138, 28, 59, 77, 97]
+Atif = np.std(speed)
 print(Atif)
