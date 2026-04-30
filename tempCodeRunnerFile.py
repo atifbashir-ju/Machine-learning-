@@ -1,13 +1,15 @@
-import pandas as pd
-from sklearn import linear_model
-from sklearn.preprocessing import StandardScaler
-scale = StandardScaler()
-df = pd.read_csv('cars2.csv')
-x = df[['Weight', 'Volume']]
-y = df['CO2']
-scaled_x = scale.fit_transform(x)
-regr = linear_model.LinearRegression()
-regr.fit(scaled_x, y)
-scaled = scale.transform([[2300, 1.3]])
-predictedCO2 = regr.predict([scaled[0]])
-print(predictedCO2)
+
+import numpy as np
+import matplotlib.pyplot as plt
+np.random.seed(2)
+x = np.random.normal(3, 1, 100)
+y = np.random.normal(150, 40, 100)/x
+train_x = x[:80]
+train_y = y[:80]
+test_x = x[80:]
+test_y = y[80:]
+mymodel = np.poly1d(np.polyfit(train_x, train_y, 4))
+myline = np.linspace(0, 6, 100)
+plt.scatter(train_x, train_y)
+plt.plot(myline, mymodel(myline))
+plt.show()
